@@ -8,11 +8,14 @@ RUN cd && \
     echo source ~/.nvm/nvm.sh >> .bashrc && \
     git clone https://github.com/creationix/nvm.git ~/.nvm && \
     git clone https://github.com/googlesamples/assistant-sdk-python.git && \
-    mkdir sdk && \
-    cp assistant-sdk-python/google-assistant-sdk/googlesamples/assistant/grpc/assistant_helpers.py sdk && \
-    cp assistant-sdk-python/google-assistant-sdk/googlesamples/assistant/grpc/audio_helpers.py sdk && \
-    cp assistant-sdk-python/google-assistant-sdk/googlesamples/assistant/grpc/device_helpers.py sdk && \
-    cp assistant-sdk-python/google-assistant-sdk/googlesamples/assistant/grpc/browser_helpers.py sdk
+    git clone https://github.com/shiraki-s/google-assistant-stt.git && \
+    mkdir app && \
+    cp google-assistant-stt/pushtalk.py app && \
+    cp -r google-assistant-stt/server/* app && \
+    cp assistant-sdk-python/google-assistant-sdk/googlesamples/assistant/grpc/assistant_helpers.py app && \
+    cp assistant-sdk-python/google-assistant-sdk/googlesamples/assistant/grpc/audio_helpers.py app && \
+    cp assistant-sdk-python/google-assistant-sdk/googlesamples/assistant/grpc/device_helpers.py app && \
+    cp assistant-sdk-python/google-assistant-sdk/googlesamples/assistant/grpc/browser_helpers.py app
 
 RUN ["/bin/bash", "-c", " \
         source ~/.nvm/nvm.sh \
@@ -23,4 +26,6 @@ RUN ["/bin/bash", "-c", " \
         && source env/bin/activate \
         && apt-get install -yq portaudio19-dev libffi-dev libssl-dev libmpg123-dev \
         && python -m pip install --upgrade google-assistant-library google-assistant-sdk[samples] \
+        && cd app \
+        && npm install \
     "]
