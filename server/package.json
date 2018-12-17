@@ -1,0 +1,16 @@
+{
+    "name": "speech-to-text",
+    "version": "0.0.1",
+    "description": "",
+    "main": "app.js",
+    "scripts": {
+        "build": "node app.js"
+    },
+    "author": "shiraki.s",
+    "license": "ISC",
+    "devDependencies": {},
+    "dependencies": {
+        "express": "^4.16.4",
+        "multer": "^1.4.1"
+    }
+}
