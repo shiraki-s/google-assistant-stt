@@ -461,7 +461,10 @@ def main(api_endpoint, credentials, project_id,
         wait_for_user_trigger = not once
         while True:
             if wait_for_user_trigger:
-                click.pause(info='Press Enter to send a new request...')
+              #  click.pause(info='Press Enter to send a new request...')
+            
+            time.sleep(1)
+            
             continue_conversation = assistant.assist()
             # wait for user trigger if there is no follow-up turn in
             # the conversation.
